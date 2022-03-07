@@ -45,6 +45,9 @@ const Output = ({ data, style, classNames, config, renderers }) => {
     let Renderer = null;
 
     switch (block.type.toLowerCase()) {
+      case 'code':
+        Renderer = renderers.code || CodeBoxOutput;
+        return <Renderer key={ i } data={ block.data } style={ style.code || {}} config={ config.code || {}} classNames={ classNames.code || {}} />;
       case 'codebox':
         Renderer = renderers.codeBox || CodeBoxOutput;
         return <Renderer key={ i } data={ block.data } style={ style.codeBox || {}} config={ config.codeBox || {}} classNames={ classNames.codeBox || {}} />;
